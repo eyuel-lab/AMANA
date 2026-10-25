@@ -92,11 +92,10 @@ Setup
    On Windows PowerShell, if the npm.ps1 script is blocked by execution policy, try npm.cmd install instead of changing system-wide policy settings.
 3. Install the Base44 CLI if it is not already available:
    npm install -g base44@latest
-4. Sign in and link the project to the correct Base44 application:
-   base44 login
-   base44 link
-5. Start the app with the Base44 local workflow:
-   base44 dev
+4. Sign in and link the project to the correct application:
+  
+5. Start the app with the  local workflow:
+   base dev
 6. Open the local URL printed in the terminal. Use the actual URL reported by the CLI rather than assuming a particular port.
 The project may require an initial publish in Base44 before local backend development works. Be careful with remote-development modes because they may interact with remote application data.
 Available npm scripts
@@ -106,21 +105,9 @@ npm run lint      # ESLint checks
 npm run typecheck # TypeScript/JS project checks
 npm run preview   # Preview a production build
 These commands are defined in package.json; their success has not been verified for this submission. Run them in your environment and report the actual results. The plain Vite server may not provide all backend functionality that the Base44 workflow supplies.
-🔧 Configuration and secrets
-The project references these frontend environment variable names:
-- VITE_BASE44_APP_BASE_URL
-- VITE_BASE44_APP_ID
-- VITE_BASE44_FUNCTIONS_VERSION
-Use the values for your own authorized Base44 application and inspect the project configuration before running it. Never guess credentials or commit .env files. Any variable prefixed with VITE_ is exposed to the browser bundle, so never put server-side secrets in a VITE_ variable.
 
-Before pushing to GitHub, review the repository for API keys, access tokens, private identity documents, personal data, production URLs that should remain private, and local environment files.
-⚠️ Current status and limitations
-- Development status: local development. A public repository, video presentation, and deployed demo have not yet been added to this README.
-- Not an official registry: AMANA is not affiliated with or a replacement for government, police, courts, financial institutions, or official identity services.
-- No arbitrary device tracking: the current project should not be described as able to locate any phone or laptop. A future recovery feature would require a properly enrolled device, explicit permissions, a secure integration, and lawful processing.
-- Payments not confirmed live: Stripe-related code is present, but real payments require correct provider configuration, protected server-side secrets, webhook validation, and end-to-end tests.
-- External identity verification not implied: do not claim Fayda or any other external verification integration unless it has been authorized, implemented, and tested.
-- Not security-certified: security-related functions are not proof that the system is production-ready. Review the implementation before handling real user data.
+
+
 👥 The team
 #	Full name	CTC ID
 1	Selam Girma	CTC-2494-26
