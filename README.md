@@ -1,3 +1,9 @@
+🛡️ AMANA
+
+Secure Digital Property Ownership & Protection System
+
+Trust the device. Verify the record.
+
 🛡️ The mission
 Buying a second-hand phone or laptop should not require a buyer to rely only on a listing or a seller's promise. AMANA is being developed as an electronics marketplace paired with ownership-record workflows, transfer requests, and lost-or-stolen reporting.
 
