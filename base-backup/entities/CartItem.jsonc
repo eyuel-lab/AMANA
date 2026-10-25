@@ -1,0 +1,39 @@
+{
+  "name": "CartItem",
+  "type": "object",
+  "properties": {
+    "listing_id": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 1
+    },
+    "listing_title": {
+      "type": "string"
+    },
+    "listing_price": {
+      "type": "number"
+    },
+    "listing_image": {
+      "type": "string"
+    },
+    "seller_id": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "name": "OwnershipRecord",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "public_ref": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "identifier_type": {
+      "type": "string"
+    },
+    "identifier_masked": {
+      "type": "string"
+    },
+    "identifier_hash": {
+      "type": "string"
+    },
+    "purchase_date": {
+      "type": "string"
+    },
+    "evidence_uris": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending_review",
+        "registered",
+        "transfer_pending",
+        "restricted",
+        "reported_lost",
+        "reported_stolen",
+        "disputed",
+        "archived"
+      ],
+      "default": "pending_review"
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "verified"
+      ],
+      "default": "unverified"
+    },
+    "certificate_serial": {
+      "type": "string"
+    },
+    "certificate_issued_at": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "low"
+    },
+    "risk_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "restriction_reason": {
+      "type": "string"
+    },
+    "active_report_id": {
+      "type": "string"
+    },
+    "active_transfer_id": {
+      "type": "string"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "is_demo": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "reviewer"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "investigator"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "auditor"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

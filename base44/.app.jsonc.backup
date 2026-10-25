@@ -1,0 +1,6 @@
+// Base44 App Configuration
+// This file links your local project to your Base44 app.
+// Do not commit this file to version control.
+{
+  "id": "https://app.base44.com/apps/6adb71c5c87bd873c4e5434b/editor/workspace/code?filePath=AGENTS.md"
+}

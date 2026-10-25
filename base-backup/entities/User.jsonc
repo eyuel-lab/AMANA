@@ -1,0 +1,17 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "reviewer",
+        "investigator",
+        "auditor",
+        "admin"
+      ],
+      "default": "user"
+    }
+  }
+}

@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 45 33% 95%;
+        --foreground: 150 8% 10%;
+        --card: 0 0% 100%;
+        --card-foreground: 150 8% 10%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 150 8% 10%;
+        --primary: 165 58% 15%;
+        --primary-foreground: 45 33% 96%;
+        --secondary: 45 25% 91%;
+        --secondary-foreground: 165 58% 15%;
+        --muted: 45 20% 92%;
+        --muted-foreground: 137 3% 40%;
+        --accent: 40 46% 60%;
+        --accent-foreground: 165 58% 12%;
+        --destructive: 4 65% 44%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 84 9% 90%;
+        --input: 84 9% 86%;
+        --ring: 165 58% 22%;
+        --radius: 0.75rem;
+        --chart-1: 165 58% 22%;
+        --chart-2: 40 46% 60%;
+        --chart-3: 158 32% 42%;
+        --chart-4: 200 35% 40%;
+        --chart-5: 12 55% 52%;
+        --surface: 45 33% 95%;
+        --surface-raised: 0 0% 100%;
+        --surface-deep: 169 68% 10%;
+        --ink-muted: 137 3% 46%;
+        --font-heading: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+        --font-body: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+        --font-display: 'Fraunces', Georgia, serif;
+        --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+        --sidebar-background: 169 68% 10%;
+        --sidebar-foreground: 45 33% 92%;
+        --sidebar-primary: 40 46% 60%;
+        --sidebar-primary-foreground: 169 68% 10%;
+        --sidebar-accent: 165 40% 18%;
+        --sidebar-accent-foreground: 45 33% 96%;
+        --sidebar-border: 165 30% 20%;
+        --sidebar-ring: 40 46% 60%;
+    }
+
+    .dark {
+        --background: 169 30% 7%;
+        --foreground: 45 33% 94%;
+        --card: 169 26% 11%;
+        --card-foreground: 45 33% 94%;
+        --popover: 169 26% 11%;
+        --popover-foreground: 45 33% 94%;
+        --primary: 40 46% 60%;
+        --primary-foreground: 169 68% 10%;
+        --secondary: 165 25% 16%;
+        --secondary-foreground: 45 33% 94%;
+        --muted: 165 25% 16%;
+        --muted-foreground: 45 15% 68%;
+        --accent: 40 46% 60%;
+        --accent-foreground: 169 68% 10%;
+        --destructive: 4 62% 50%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 165 20% 20%;
+        --input: 165 20% 22%;
+        --ring: 40 46% 60%;
+        --sidebar-background: 169 40% 8%;
+        --sidebar-foreground: 45 33% 92%;
+        --sidebar-primary: 40 46% 60%;
+        --sidebar-primary-foreground: 169 68% 10%;
+        --sidebar-accent: 165 30% 14%;
+        --sidebar-accent-foreground: 45 33% 96%;
+        --sidebar-border: 165 25% 16%;
+        --sidebar-ring: 40 46% 60%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground font-body antialiased;
+        font-feature-settings: "ss01" 1, "cv05" 1;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-heading tracking-tight;
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    :focus-visible {
+        @apply outline-none ring-2 ring-ring/60 ring-offset-2 ring-offset-background;
+    }
+
+    ::selection {
+        background: hsl(var(--accent) / 0.35);
+    }
+}
+
+@layer components {
+    .font-display {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: -0.015em;
+    }
+
+    .container-page {
+        @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8;
+    }
+
+    .surface-card {
+        @apply rounded-2xl border border-border/80 bg-card;
+        box-shadow: 0 1px 2px hsl(var(--primary) / 0.04), 0 12px 32px -24px hsl(var(--primary) / 0.35);
+    }
+
+    .hairline {
+        @apply border-t border-border/70;
+    }
+
+    .eyebrow {
+        @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground;
+    }
+
+    .prose-legal h2 {
+        @apply mt-10 mb-3 text-xl font-semibold;
+    }
+
+    .prose-legal p,
+    .prose-legal li {
+        @apply text-[15px] leading-7 text-muted-foreground;
+    }
+
+    .prose-legal ul {
+        @apply my-3 list-disc space-y-2 pl-5;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    .grain {
+        background-image: radial-gradient(hsl(var(--primary) / 0.16) 0.5px, transparent 0.5px);
+        background-size: 18px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

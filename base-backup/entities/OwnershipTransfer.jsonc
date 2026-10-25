@@ -1,0 +1,129 @@
+{
+  "name": "OwnershipTransfer",
+  "type": "object",
+  "properties": {
+    "record_id": {
+      "type": "string"
+    },
+    "record_ref": {
+      "type": "string"
+    },
+    "item_label": {
+      "type": "string"
+    },
+    "from_owner_id": {
+      "type": "string"
+    },
+    "from_owner_name": {
+      "type": "string"
+    },
+    "from_owner_email": {
+      "type": "string"
+    },
+    "to_email": {
+      "type": "string"
+    },
+    "to_user_id": {
+      "type": "string"
+    },
+    "to_user_name": {
+      "type": "string"
+    },
+    "from_consent": {
+      "type": "boolean",
+      "default": false
+    },
+    "to_consent": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending_acceptance",
+        "pending_review",
+        "completed",
+        "rejected",
+        "cancelled"
+      ],
+      "default": "pending_acceptance"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "review_notes": {
+      "type": "string"
+    },
+    "decided_by": {
+      "type": "string"
+    },
+    "decided_at": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "low"
+    },
+    "risk_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.from_owner_id": "{{user.id}}"
+        },
+        {
+          "data.to_user_id": "{{user.id}}"
+        },
+        {
+          "data.to_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "reviewer"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "investigator"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "auditor"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
